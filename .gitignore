@@ -1,0 +1,20 @@
+# Entornos Virtuales
+venv/
+env/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Frontend 
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Archivos del Sistema Operativo
+.DS_Store
+Thumbs.db
