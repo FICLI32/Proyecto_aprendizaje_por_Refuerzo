@@ -5,6 +5,7 @@ class Environment:
         self.paso_actual = 0
         self.maximo_pasos = 50 # duración de un episodio
         self.anomalia_activa = False
+        self.estado_actual = None
 
     def _get_estado(self):
         # Simula los sensores del entorno y devuelve las variables [velocidad_promedio, densidad_trafico]
@@ -25,17 +26,15 @@ class Environment:
     def reset(self):
         # Reinicia el entorno para un nuevo episodio
         self.paso_actual = 0
-        self.anomalia_activa = False
-        return self._get_estado()
+        self.estado_actual = self._get_estado()
+        return self.estado_actual
     
     def paso(self, accion):
         # Simula un paso en el entorno basado en la acción tomada por el agente
-        estado = self._get_estado()
-        anomalia = estado["anomalia_activa"]
+        anomalia = self.estado_actual["anomalia_activa"]
 
         # Calcula la recompensa basada en la acción y el estado actual
         reward = 0
-
         if anomalia and accion == 1:  # Verdadero positivo: el agente detecta correctamente la anomalía
             reward = 10  # Recompensa positiva por tomar la acción correcta
         elif not anomalia and accion == 1:  # Falso positivo: el agente detecta una anomalía inexistente
@@ -47,6 +46,7 @@ class Environment:
 
         self.paso_actual += 1
         done = self.paso_actual >= self.maximo_pasos  # El episodio termina si se alcanza el número máximo de pasos
+        self.estado_actual = self._get_estado()  # Actualiza el estado del entorno para el siguiente paso
 
-        return estado, reward, done
+        return self.estado_actual, reward, done
     
