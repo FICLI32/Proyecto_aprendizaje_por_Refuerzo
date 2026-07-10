@@ -9,17 +9,17 @@ class Environment:
 
     def _get_estado(self):
         # Simula los sensores del entorno y devuelve las variables [velocidad_promedio, densidad_trafico]
-        if np.random.rand() < 0.15: # 15% de probabilidad de que ocurra una anomalía
+        if np.random.rand() < 0.30: # 40% de probabilidad de que ocurra una anomalía
             self.anomalia_activa = True
         else:
             self.anomalia_activa = False
         
         if self.anomalia_activa:
-            velocidad_promedio = np.random.uniform(0, 20) # km/h, velocidad muy baja debido a la anomalía
-            densidad_trafico = np.random.uniform(80, 100) # % de ocupacion, tráfico muy denso
+            velocidad_promedio = np.random.uniform(0, 30) # km/h, velocidad muy baja debido a la anomalía
+            densidad_trafico = np.random.uniform(70, 100) # % de ocupacion, tráfico muy denso
         else:
             velocidad_promedio = np.random.uniform(40, 80) # km/h, velocidad normal
-            densidad_trafico = np.random.uniform(20, 60) # % de ocupacion, tráfico moderado
+            densidad_trafico = np.random.uniform(20, 70) # % de ocupacion, tráfico moderado
         
         return {"velocidad_promedio": velocidad_promedio, "densidad_trafico": densidad_trafico, "anomalia_activa": self.anomalia_activa}
     

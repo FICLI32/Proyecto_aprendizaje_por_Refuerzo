@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./backend
+    ports:
+      - "8000:8000"
+    container_name: rl_backend
+
+  frontend:
+    build: 
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    container_name: rl_frontend
+    depends_on:
+      - backend

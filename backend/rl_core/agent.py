@@ -27,7 +27,7 @@ class Agent:
 
         # Densidad discretizada (0: baja, 1: media, 2: alta)
         if densidad < 40: d_index = 0
-        elif densidad < 80: d_index = 1
+        elif densidad < 70: d_index = 1
         else: d_index = 2
 
         # Combinar los índices para obtener el estado discreto (0-8)
