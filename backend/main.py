@@ -9,7 +9,7 @@ app = FastAPI(title="Sistema de Control de Tráfico Inteligente RL")
 # Configuración de CORS para que el frontend pueda comunicarse con el backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # 
+    allow_origins=["*"], 
     allow_credentials=True,
     allow_methods=["*"], 
     allow_headers=["*"],  
